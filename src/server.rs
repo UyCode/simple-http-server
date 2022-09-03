@@ -1,10 +1,8 @@
-use crate::http::Request;
-use std::convert::TryFrom;
-use std::convert::TryInto;
+
 pub mod server {
     use std::{net::TcpListener, io::Read};
 
-    use crate::http::{Request, request};
+    use crate::http::Request;
 
     pub struct Server {
         addr: String
