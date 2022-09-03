@@ -1,5 +1,3 @@
-use crate::http::request;
-
 use super::method::{Method, MethodError};
 use std::error::Error;
 use std::fmt::{Debug, Display, Formatter, Result as FmtResult};
@@ -91,9 +89,10 @@ impl<'buf> TryFrom<&'buf [u8]> for Request<'buf> {
 }
 
 fn get_next_word(request: &str) -> Option<(&str, &str)> {
-    let mut iter = request.chars();
+    
 
     /* method 1
+    let _iter = request.chars();
     loop {
         let item = iter.next();
         match item {
@@ -125,7 +124,6 @@ impl ParseError {
             Self::InvalidEncoding => "invalid Encoding",
             Self::InvalidMethod => "invalid Method",
             Self::InvalidProtocol => "invalid Protocol",
-            _ => "something went wrong",
         }
     }
 }
