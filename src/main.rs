@@ -9,7 +9,7 @@ mod http;
 mod website_handler;
 fn main() {
 
-    let default = format!("{}\\public", env!("CARGO_MANIFEST_DIR"));
+    let default = format!("{}/public", env!("CARGO_MANIFEST_DIR"));
     let path = env::var("PUBLIC_PATH").unwrap_or(default);
 
     println!("the public path is: {}", path);
