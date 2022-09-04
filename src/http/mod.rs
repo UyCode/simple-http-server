@@ -1,8 +1,12 @@
 pub use request::Request;
 pub use method::Method;
 pub use request::ParseError;
-pub use qery_string::{QueryString, Value as QueryStringValue};
+pub use query_string::{QueryString, Value as QueryStringValue};
+pub use response::Response;
+pub use status_code::StatusCode;
 
 pub mod request;
 pub mod method;
-pub mod qery_string;
+pub mod query_string;
+pub mod response;
+pub mod status_code;
