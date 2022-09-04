@@ -1,4 +1,4 @@
-use std::{net::TcpListener, io::Read, convert::TryFrom, io::Write};
+use std::{net::TcpListener, io::Read, convert::TryFrom};
 use crate::http::{ParseError, Request, Response, StatusCode};
 
 pub struct Server {
@@ -19,18 +19,17 @@ impl Server {
         let listener = TcpListener::bind(&self.addr).unwrap();
 
         loop {
-            let something = match listener.accept() {
+            match listener.accept() {
                 Ok((mut stream, _)) => {
                     println!("Accepted connection");
                     let mut buffer = [0; 1024];
-                    let size = match stream.read(&mut buffer) {
+                    match stream.read(&mut buffer) {
                         Ok(_) => {
                             //Request::try_from(&buffer[..]);
                             //let result: &Result<Request, _> = &buffer[..].try_into();
 
                             let response = match Request::try_from(&buffer[..]) {
                                 Ok(request) => {
-
                                     /*dbg!(request);
                                     Response::new(
                                         StatusCode::Ok,
@@ -54,12 +53,12 @@ impl Server {
                         Err(e) => {
                             println!("Error: {:?}", e);
                         }
-                    };
+                    }
                 }
                 Err(e) => {
                     println!("Error: {:?}", e);
                 }
-            };
+            }
 
         }
     }

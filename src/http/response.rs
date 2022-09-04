@@ -1,4 +1,4 @@
-use std::fmt::{Formatter, Result as FmtResult};
+use std::fmt::{Debug, Display, Formatter, Result as FmtResult};
 use std::fs::File;
 use std::net::TcpStream;
 use std::io::{Write, Result as IoResult};
@@ -36,8 +36,10 @@ impl Response {
     }
 }
 
-/*impl Display for Response {
+// for demo purposes
+impl Display for Response {
     fn fmt(&self, f: &mut Formatter) -> FmtResult {
-
+        write!(f, "{}", self.status_code)
+        //unimplemented!()
     }
-}*/
+}

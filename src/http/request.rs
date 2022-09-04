@@ -56,7 +56,7 @@ impl<'buf> TryFrom<&'buf [u8]> for Request<'buf> {
         let request = str::from_utf8(buffer)?;//.or(Err(ParseError::InvalidEncoding))?;
 
         // method 1
-        /* match get_next_word(requst) {
+        /* match get_next_word(request) {
             Some((method, request)) => {},
             None => return Err(ParseError::InvalidRequest),
 
